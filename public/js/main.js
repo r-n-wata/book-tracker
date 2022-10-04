@@ -1,30 +1,30 @@
 const deleteBtn = document.querySelectorAll('.del')
-const todoItem = document.querySelectorAll('span.not')
-const todoComplete = document.querySelectorAll('span.completed')
-const todoWorkingOn = document.querySelectorAll('span.workingOn')
-const todoUnmarkComplete = document.querySelectorAll('span.incomplete')
-const todoArchive = document.querySelectorAll('span.archive')
+const bookItem = document.querySelectorAll('span.not')
+const bookComplete = document.querySelectorAll('span.completed')
+const bookReading = document.querySelectorAll('span.reading')
+const bookUnmarkComplete = document.querySelectorAll('span.incomplete')
+const bookArchive = document.querySelectorAll('span.archive')
 
 Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deleteTodo)
+    el.addEventListener('click', deletebook)
 })
 
 
-Array.from(todoWorkingOn).forEach((el)=>{
+Array.from(bookReading).forEach((el)=>{
     el.addEventListener('click', markWorkingOn)
 })
 
-Array.from(todoUnmarkComplete).forEach((el)=>{
+Array.from(bookUnmarkComplete).forEach((el)=>{
     el.addEventListener('click', unmarkComplete)
 })
 
 
-Array.from(todoArchive).forEach((el)=>{
+Array.from(bookArchive).forEach((el)=>{
     el.addEventListener('click', markArchive)
 })
 
 
-Array.from(todoComplete).forEach((el)=>{
+Array.from(bookComplete).forEach((el)=>{
     el.addEventListener('click', markComplete)
 })
 
@@ -33,14 +33,14 @@ Array.from(todoComplete).forEach((el)=>{
     
 // })
 
-async function deleteTodo(){
-    const todoId = this.parentNode.parentNode.dataset.id
+async function deleteBook(){
+    const bookId = this.parentNode.parentNode.dataset.id
     try{
-        const response = await fetch('todos/deleteTodo', {
+        const response = await fetch('todos/deleteBook', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'bookIdFromJSFile': bookId
             })
         })
         const data = await response.json()
@@ -51,14 +51,14 @@ async function deleteTodo(){
     }
 }
 
-async function markWorkingOn(){
-    const todoId = this.parentNode.parentNode.dataset.id
+async function markReading(){
+    const bookId = this.parentNode.parentNode.dataset.id
     try{
-        const response = await fetch('todos/markWorkingOn', {
+        const response = await fetch('books/markReading', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'bookIdFromJSFile': bookId
             })
         })
         const data = await response.json()
@@ -71,13 +71,13 @@ async function markWorkingOn(){
 
 
 async function unmarkComplete(){
-    const todoId = this.parentNode.parentNode.dataset.id
+    const bookId = this.parentNode.parentNode.dataset.id
     try{
-        const response = await fetch('todos/unmarkComplete', {
+        const response = await fetch('books/unmarkComplete', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'bookIdFromJSFile': bookId
             })
         })
         const data = await response.json()
@@ -89,13 +89,13 @@ async function unmarkComplete(){
 }
 
 async function markArchive(){
-    const todoId = this.parentNode.parentNode.dataset.id
+    const bookId = this.parentNode.parentNode.dataset.id
     try{
-        const response = await fetch('todos/markArchive', {
+        const response = await fetch('books/markArchive', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'bookIdFromJSFile': bookId
             })
         })
         const data = await response.json()
@@ -107,14 +107,14 @@ async function markArchive(){
 }
 
 async function markComplete(){
-    const todoId = this.parentNode.parentNode.dataset.id
-    console.log(todoId)
+    const bookId = this.parentNode.parentNode.dataset.id
+    console.log(bookId)
     try{
-        const response = await fetch('todos/markComplete', {
+        const response = await fetch('books/markComplete', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'bookIdFromJSFile': bookId
             })
         })
         const data = await response.json()
@@ -145,16 +145,16 @@ async function markComplete(){
 
 
 
-const openAddTodo = document.querySelector('.add-todo-open-btn')
-const submitTodoBtn = document.querySelector('.submit-todo')
-const addTodoContainer = document.querySelector('.add-todo--container')
+const openAddBook = document.querySelector('.add-book-open-btn')
+const submitBookBtn = document.querySelector('.submit-book')
+const addBookContainer = document.querySelector('.add-book--container')
 
-openAddTodo.addEventListener('click', () =>{
-    addTodoContainer.style.display = 'flex'
-    addTodoContainer.classList.remove('hidden')
+openAddBook.addEventListener('click', () =>{
+    addBookContainer.style.display = 'flex'
+    addBookContainer.classList.remove('hidden')
 })
 
 
-submitTodoBtn.addEventListener('click', () =>{
-    addTodoContainer.style.display = 'none'
+submitBookBtn.addEventListener('click', () =>{
+    addBookContainer.style.display = 'none'
 })

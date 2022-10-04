@@ -1,31 +1,31 @@
-const Todo = require('../models/Todo')
+const Book = require('../models/Book')
 
 module.exports = {
-    getTodos: async (req,res)=>{
+    getBooks: async (req,res)=>{
         console.log(req.user)
         try{
-            const todoItems = await Todo.find({
+            const bookItems = await Book.find({
                 userId:req.user.id,
-                workingOn:false,
+                reading:false,
                 completed:false,
                 archive:false
             })
-            const itemsLeft = await Todo.countDocuments({
+            const itemsLeft = await Book.countDocuments({
                 userId:req.user.id,
                 archive: false,
-                workingOn: false,
+                reading: false,
                 completed: false
             })
 
-            const todosCompleted = await Todo.find({
+            const booksCompleted = await Book.find({
                 userId:req.user.id,
                 completed: true,
                 archive:false
             })
 
-            const currentWorkingOn = await Todo.find({
+            const currentlyReading = await Book.find({
                 userId:req.user.id,
-                workingOn: true,
+                reading: true,
                 archive:false
             })
 
@@ -36,15 +36,15 @@ module.exports = {
             // })
             
             
-            res.render('todos.ejs', {
-                todos: todoItems, 
+            res.render('books.ejs', {
+                books: bookItems, 
                 left: itemsLeft, 
-                workingOn: currentWorkingOn,
-                completed: todosCompleted,
+                reading: currentlyReading,
+                completed: booksCompleted,
                 user: req.user
             })
 
-            console.log(todosCompleted)
+            console.log(booksCompleted)
 
             console.log(req.user)
         }catch(err){
@@ -52,29 +52,29 @@ module.exports = {
         }
     },
 
-    createTodo: async (req, res)=>{
+    createBook: async (req, res)=>{
         try{
-            await Todo.create({
-                todo: req.body.todoItem, 
+            await Book.create({
+                book: req.body.bookItem, 
                 completed: false, 
                 archive: false,
-                workingOn: false,
+                reading: false,
                 userId: req.user.id
             })
-            console.log('Todo has been added!')
-            res.redirect('/todos')
+            console.log('Book has been added!')
+            res.redirect('/books')
         }catch(err){
             console.log(err)
         }
     },
 
-    markWorkingOn: async (req, res) =>{
+    markReading: async (req, res) =>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                workingOn: true,
+            await Book.findOneAndUpdate({_id:req.body.bookIdFromJSFile},{
+                reading: true,
             })
-            console.log('Moved to working on')
-            res.json('Moved to working on')
+            console.log('Moved to reading')
+            res.json('Moved to reading')
         }catch(err){
             console.log(err)
         }
@@ -82,7 +82,7 @@ module.exports = {
 
     markArchive: async (req, res) =>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+            await Book.findOneAndUpdate({_id:req.body.bookIdFromJSFile},{
                 archive: true,
                 completed: false
             })
@@ -95,7 +95,7 @@ module.exports = {
 
     unmarkArchive: async (req, res) =>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+            await Book.findOneAndUpdate({_id:req.body.bookIdFromJSFile},{
                 archive: false,
             })
             console.log('Unmark archive')
@@ -107,11 +107,11 @@ module.exports = {
 
     markComplete: async (req, res)=>{
         try{
-            await Todo.findOneAndUpdate({
-                _id:req.body.todoIdFromJSFile
+            await Book.findOneAndUpdate({
+                _id:req.body.bookIdFromJSFile
             },{
                 completed: true,
-                workingOn: false
+                reading: false
             })
             console.log('Marked Complete')
             res.json('Marked Complete')
@@ -121,9 +121,9 @@ module.exports = {
     },
     unmarkComplete: async (req, res)=>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
+            await Book.findOneAndUpdate({_id:req.body.bookIdFromJSFile},{
                 completed: false,
-                workingOn: true
+                reading: true
             })
             console.log('Marked Incomplete')
             res.json('Marked Incomplete')
@@ -131,11 +131,11 @@ module.exports = {
             console.log(err)
         }
     },
-    deleteTodo: async (req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
+    deleteBook: async (req, res)=>{
+        console.log(req.body.bookIdFromJSFile)
         try{
-            await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
-            console.log('Deleted Todo')
+            await Book.findOneAndDelete({_id:req.body.bookIdFromJSFile})
+            console.log('Deleted Book')
             res.json('Deleted It')
         }catch(err){
             console.log(err)

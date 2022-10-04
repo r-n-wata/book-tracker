@@ -211,16 +211,16 @@ a:hover {
 }
 
 /*************************************************************************************************************************************
-Todo Page
+book Page
 *************************************************************************************************************************************/
 
 
-.todos-container{
+.books-container{
     padding:4rem 5rem;
     
 }
 
-.todos-lists-container{
+.books-lists-container{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -232,21 +232,21 @@ Todo Page
 
 }
 
-.todo-title{
+.book-title{
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 700;
     font-size: 2rem;
     color: #212121;
 }
 
-.todos-lists-container section h2{
+.books-lists-container section h2{
     padding: .5rem 1rem;
     background: #F0E7F6;
     border-radius: 1.25rem;
 
 }
 
-.todos-lists-container section{
+.books-lists-container section{
     width:33.33%;
     display: flex;
     flex-direction: column;
@@ -259,14 +259,14 @@ Todo Page
     flex-grow: 0;
 }
 
-.todo-container{
+.book-container{
 
     display: flex;
     flex-direction: column;
     gap:1rem;
 }
 
-.todoItem{
+.bookItem{
     padding:1rem;
     width:20rem;
     height:10rem;
@@ -276,13 +276,13 @@ Todo Page
     border-radius: .5rem;
     
 }
-.todoItem{
+.bookItem{
     display: flex;
     flex-direction: column;
     gap:.5rem;
 }
 
-.todoItem-todo{
+.bookItem-book{
     font-weight: 600;
     font-size: 1.3rem;
 
@@ -298,10 +298,10 @@ Todo Page
 }
 
 /*************************************************************************************************************************************
-Todo Page buttons
+Book Page buttons
 *************************************************************************************************************************************/
 
-.workingOn,
+.reading,
 .archive,
 .del,
 .done,
@@ -319,7 +319,7 @@ Todo Page buttons
     background-color: #F1F1F1;
 }
 
-.workingOn,
+.reading,
 .incomplete {
     background-color: #FFF89C;
 }
@@ -334,7 +334,7 @@ Todo Page buttons
     color: 820000;
 }
 
-.add-todo-open-btn,
+.add-book-open-btn,
 a {
     border: 1px solid #483838;
         padding: .3rem;
@@ -345,7 +345,7 @@ a {
         cursor: pointer;
 }
 
-.add-todo-open-btn {
+.add-book-open-btn {
     background-color: #A5BECC;
 }
 
@@ -362,7 +362,7 @@ a {
 .hidden {
     display: none;
 }
-.add-todo--container{
+.add-book--container{
     
     position: fixed;
     top: 0;
@@ -380,7 +380,7 @@ a {
 }
 
 
-.add-todo--inner-container{
+.add-book--inner-container{
     
     padding:2rem 5rem;
     background: #fff;
@@ -389,11 +389,11 @@ a {
     transition: all 5s ease-in-out;
 }
 
-.add-todo--title{
+.add-book--title{
     font-size:2.5rem;
 }
 
-.add-todo--inner-contaner .add-todo--text{
+.add-book--inner-contaner .add-book--text{
     width:100%;
     height:4rem;
     font-size: 1.7rem;
@@ -401,7 +401,7 @@ a {
 
 }
 
-.add-todo--inner-container .submit-todo{
+.add-book--inner-container .submit-book{
     width:50%;
 }
 

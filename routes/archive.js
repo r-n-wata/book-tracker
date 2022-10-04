@@ -3,7 +3,7 @@ const router = express.Router()
 const archiveController = require('../controllers/archive') 
 const { ensureAuth } = require('../middleware/auth')
 
-router.get('/', archiveController.getTodos)
+router.get('/', archiveController.getBooks)
 
 
 

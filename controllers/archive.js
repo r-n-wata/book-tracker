@@ -1,18 +1,18 @@
-const Todo = require('../models/Todo')
+const Book = require('../models/Book')
 
 module.exports = {
-    getTodos: async (req,res)=>{
+    getBooks: async (req,res)=>{
         console.log(req.user)
         try{
 
-            const todosArchived = await Todo.find({
+            const bookArchived = await Book.find({
                 userId:req.user.id,
                 archive: true
             })
             
             
             res.render('archive.ejs', {
-                archivedTodos: todosArchived,
+                archivedTodos: bookArchived,
                 user: req.user
             })
             

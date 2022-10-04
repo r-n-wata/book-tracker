@@ -10,12 +10,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Archived Todos</h1>
+    <h1>Bookshelf</h1>
                 <ul>
-                    <% archivedTodos.forEach( el => { %>
-                            <li class='todoItem' data-id='<%=el._id%>'>
-                                <span><%= el.todo %></span>
-                                <div class="todoItem--btns">
+                    <% archivedBooks.forEach( el => { %>
+                            <li class='bookItem' data-id='<%=el._id%>'>
+                                <span><%= el.book %></span>
+                                <div class="bookItem--btns">
                                     <span class="incomplete"> inComplete</span>
                                   
                                 </div>
