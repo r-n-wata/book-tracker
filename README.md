@@ -1,22 +1,11 @@
 # Introduction
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app
+A Simple Book Tracker is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app
 
----
-
-> Be sure to add that lovely star 😀 and fork it for your own copy
-
----
 
 # Objectives
 
-- It's a beginner level app created to understand how MVC concept and logins are added
-
----
-
-# Who is this for?
-
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
+- It's an app the helps the user keep track of what they are reading. They can login and save the books the want to read, what they're reading and what they have read. All the books are kept in a virtual bookshelf that can be edited.
 
 ---
 
@@ -32,32 +21,3 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
 
 ---
 
-# Things to add
-
-- Create a `.env` file and add the following as `key: value`
-  - PORT: 2121 (can be any port example: 3000)
-  - DB_STRING: `your database URI`
-  ***
-
-Have fun testing and improving it! 😎
-
-Ideas for project:
-
-To Start:
-
-- To do column
-- working on column
-- Finished / completed column
-- fancy home page https://www.figma.com/community/file/994611219185887302
-- fancy todos page https://www.figma.com/community/file/892825410260715717
-- add another page to show archive of deleted/finished to dos
-- delete word to trashcan icon
-- drop down to change staus (todo, working on, completed)
-- add default for each column (only image for completed; text for to do and working on columns)
-- add date to do
-
-Later on:
-
-- change todos to books
-- include a page with all books (similar to library)
-- search bar
