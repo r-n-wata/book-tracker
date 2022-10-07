@@ -7,7 +7,7 @@ module.exports = {
 
             const bookArchived = await Book.find({
                 userId:req.user.id,
-                archive: true
+                // archive: true
             })
             
             

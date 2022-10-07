@@ -90,11 +90,33 @@
     
         <div class="add-book--inner-container ">
 
-            <h3 class="add-book--title">Add Book</h3>
+            <!-- <h3 class="add-book--title">Add Book</h3>
             <form action="/books/createBook" method='POST'>
-            <input type="text" placeholder="Enter Book Item" name='bookItem' class="add-book--text">
+            <input type="text" placeholder="Enter Book title" name='title' class="add-book--text">
             <input type="submit" class="submit-book">
-            </form>  
+            </form>   -->
+
+            <form>
+                <label>
+                    Search
+                    
+                    <input type="text" id="user-input">
+                    by
+                    <select name="" id="search-type">
+                        <option value="please select" selected>Please choose one</option>
+                        <option value="title">title</option>
+                        <option value="IBN">IBN</option>
+
+                    </select>
+
+                    
+                </label>
+                <button type="button" id="find-book">icon</button>
+            </form>
+
+            <section id="book-result">
+
+            </section>
         </div>
   
     </div>

@@ -6,12 +6,12 @@ const bookUnmarkComplete = document.querySelectorAll('span.incomplete')
 const bookArchive = document.querySelectorAll('span.archive')
 
 Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deletebook)
+    el.addEventListener('click', deleteBook)
 })
 
 
 Array.from(bookReading).forEach((el)=>{
-    el.addEventListener('click', markWorkingOn)
+    el.addEventListener('click', markReading)
 })
 
 Array.from(bookUnmarkComplete).forEach((el)=>{
@@ -155,6 +155,84 @@ openAddBook.addEventListener('click', () =>{
 })
 
 
-submitBookBtn.addEventListener('click', () =>{
-    addBookContainer.style.display = 'none'
-})
+// submitBookBtn.addEventListener('click', () =>{
+//     addBookContainer.style.display = 'none'
+// })
+
+
+// collecting data from user
+
+const findBook = document.querySelector('#find-book')
+
+findBook.addEventListener('click', () => {
+    const formData = {}
+
+    formData.userInput = document.querySelector('#user-input').value
+    formData.searchBy = document.querySelector('#search-type').value
+
+    console.log(formData)
+
+
+    // search in google api
+
+    async function fetchBooks() {
+        const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${formData.userInput}&key=AIzaSyBA1Ti2jkQlPqIO7iyMlWnA9VJauBIbddU`);
+        // waits until the request completes..
+        // turns into an object
+        const data = res.json()
+        return data
+      }
+
+    fetchBooks().then(books => {
+        
+
+        books = books.items.map(book => ({
+           title: book.volumeInfo.title,
+           authors: book.volumeInfo.authors,
+           image: book.volumeInfo.imageLinks.smallThumbnail && book.volumeInfo.imageLinks.smallThumbnail
+        }))
+
+        books.forEach(book =>{
+            const container = document.createElement('div')
+            const h4 = document.createElement('h4')
+            const img = document.createElement('img')
+            const authorsDiv = document.createElement('div')
+            
+            const resultSec = document.querySelector('#book-result')
+
+            h4.innerText = book.title
+            img.src = book.image
+            
+            const authors = Array(book.authors)
+            if(authors[0]){
+                  authors[0].forEach(author => {
+                    const p = document.createElement('span')
+
+                    p.innerText = author  
+                    
+                    authorsDiv.appendChild(p)
+                    
+                
+                })
+            }else{
+                const p = document.createElement('span')
+
+                p.innerText = 'No authors available'
+                authorsDiv.appendChild(p)
+            }
+            // add them to the book result section
+            resultSec.appendChild(container)
+            container.appendChild(img)
+            container.appendChild(h4)
+            container.appendChild(authorsDiv)
+    
+        })
+        
+    })
+    
+
+    })
+
+
+
+

@@ -55,7 +55,10 @@ module.exports = {
     createBook: async (req, res)=>{
         try{
             await Book.create({
-                book: req.body.bookItem, 
+                bookId: req.body.bookId,
+                title: req.body.title,
+                author: req.body.author,
+                image: req.body.image,
                 completed: false, 
                 archive: false,
                 reading: false,
