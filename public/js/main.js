@@ -250,15 +250,16 @@ findBook.addEventListener('click', () => {
                     } 
 
                 console.log(formData)
-                let res = await fetch('/book/createBook',{
+                let res = await fetch('/books/createBook',{
                     method: 'POST',
                     headers: {
-                      'Accept': 'application/json',
+                    //   'Accept': 'application/json',
                       'Content-Type': 'application/json'
                     },
-                    body: formData
+                    body:  JSON.stringify(formData)
                 });
-
+                addBookContainer.style.display = 'none'
+                window.location.reload()
                 console.log(res)
             
                
@@ -274,40 +275,6 @@ findBook.addEventListener('click', () => {
         
     })
     
-    const bookImg = document.querySelector('.bookImg')
-    const bookTitle = document.querySelector('.add-book-title')
-    const bookAuthors = [...document.querySelectorAll('author')]
-
-
-    // add an event listener on each book container
-    // let booksEle = document.querySelectorAll('.book-result > div')
-
-    // booksEle.forEach(el => {
-    //     el.addEventListener('click', async() =>{
-    //         console.log('workin')
-    //     hoverImg.src = ''
-
-    //     const formData = new FormData()
-
-    //     formData.append('title', bookTitle)
-    //     formData.append('author', bookAuthors.join(''))
-    //     formData.append('image', bookImg)
-
-    //     let response = await fetch('/book/createBook', {
-    //         method: 'POST',
-    //         body: new FormData(formElem)
-    //     });
-    
-    //     let result = await response.json();
-    //     console.log(result)
-    //     })
-    // })
-
-
-    // // console.log(bookAuthors)
-    // // console.log(booksEle)
-        
-  
 })
 
 

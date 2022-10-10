@@ -20,8 +20,11 @@
                 <ul class="book-container">
                     <% books.forEach( el => { %>
                             <li class='bookItem' data-id='<%=el._id%>'>
-                                <span class="bookItem-book"><%= el.book %></span>
-
+                                <!-- <span class="bookItem-book"><%= el.book %></span> -->
+                                
+                                <img src="<%= el.image %>" alt="" class="logo">
+                               <span  class="bookItem-book"><%= el.title %></span>
+                                <span><%= el.author.join('') %></span>
                                 <div class="bookItem-btns">
                                    <span class="reading">In progress</span>
                                      <span class="archive">Archive</span>  
@@ -60,7 +63,9 @@
                 <ul class="book--container">
                     <% completed.forEach( el => { %>
                             <li class='bookItem' data-id='<%=el._id%>'>
-                                <span  class="bookItem-book"><%= el.book %></span>
+                                <span  class="bookItem-book"><%= el.title %></span>
+                                <span><%= el.author.join('') %></span>
+                                <%= img_tag(encodeURI(el.image)) %>
                                 <div class="bookItem-btns">
 
                                     <span class="incomplete"> In progress</span>
