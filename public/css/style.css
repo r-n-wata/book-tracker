@@ -358,7 +358,7 @@ a {
 }
 
 
-/* add todos pop-up */
+/* add book pop-up */
 .hidden {
     display: none;
 }
@@ -381,7 +381,13 @@ a {
 
 
 .add-book--inner-container{
-    
+    width:50%;
+    height:auto;
+    max-height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
     padding:2rem 5rem;
     background: #fff;
     border-radius: .5rem;
@@ -389,9 +395,37 @@ a {
     transition: all 5s ease-in-out;
 }
 
-.add-book--title{
-    font-size:2.5rem;
+.add-book--inner-container form{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    /* border:1px solid red; */
 }
+
+.add-book--inner-container-label{
+    /* border:1px solid black; */
+    display: flex;
+    gap:1rem;
+}
+.user-input{
+    border:1px solid gray;
+    border-radius: 5%;
+
+}
+
+.btn-search-hover{
+    display:none
+}
+button:hover .btn-search{
+    display:none
+}
+
+button:hover .btn-search-hover{
+    display:block
+}
+/* .add-book--title{
+    font-size:2.5rem;
+} */
 
 .add-book--inner-contaner .add-book--text{
     width:100%;
@@ -403,5 +437,58 @@ a {
 
 .add-book--inner-container .submit-book{
     width:50%;
+}
+
+
+
+/* book result from user search */
+
+.book-result{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex:1 1 25%;
+    
+}
+
+.book-result .book{
+    width:25%;
+    margin:1rem;
+    cursor:pointer;
+    position: relative;
+    padding: 0 .3rem;
+    
+}
+
+.book img{
+    width:100%;
+    height:150px;
+}
+
+/* add icon on hover book */
+
+.book .hoverImg{
+    display:none;
+    position: absolute;
+    left: 0;
+    top:0;
+    height:100%;
+    width:100%;
+    background: rgba(48, 48, 48, 0.8);
+    border-radius: 4%;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoverImg img{
+    width:50%;
+    height:40%;
+}
+
+.book:hover .hoverImg{
+    display:flex;
+
 }
 

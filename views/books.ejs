@@ -89,18 +89,11 @@
 
     
         <div class="add-book--inner-container ">
-
-            <!-- <h3 class="add-book--title">Add Book</h3>
-            <form action="/books/createBook" method='POST'>
-            <input type="text" placeholder="Enter Book title" name='title' class="add-book--text">
-            <input type="submit" class="submit-book">
-            </form>   -->
-
             <form>
-                <label>
+                <label class="add-book--inner-container-label">
                     Search
                     
-                    <input type="text" id="user-input">
+                    <input type="text" id="user-input" class="user-input">
                     by
                     <select name="" id="search-type">
                         <option value="please select" selected>Please choose one</option>
@@ -111,10 +104,13 @@
 
                     
                 </label>
-                <button type="button" id="find-book">icon</button>
+                <button type="button" id="find-book">
+                    <img src="/public/image/search.png" alt="search icon" class="btn-search">
+                    <img src="/public/image/search-hover.gif" alt="search gif" class="btn-search-hover">
+                </button>
             </form>
 
-            <section id="book-result">
+            <section id="book-result" class="book-result">
 
             </section>
         </div>

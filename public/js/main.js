@@ -193,15 +193,22 @@ findBook.addEventListener('click', () => {
         }))
 
         books.forEach(book =>{
+
+            // create html elements to display the data
             const container = document.createElement('div')
             const h4 = document.createElement('h4')
-            const img = document.createElement('img')
+            const bookImg = document.createElement('img')
             const authorsDiv = document.createElement('div')
+            const hoverImgCon = document.createElement('div')
+            const hoverImg = document.createElement('img')
+
             
             const resultSec = document.querySelector('#book-result')
 
             h4.innerText = book.title
-            img.src = book.image
+            bookImg.src = book.image
+
+            hoverImg.src = '../image/add.png'
             
             const authors = Array(book.authors)
             if(authors[0]){
@@ -209,7 +216,7 @@ findBook.addEventListener('click', () => {
                     const p = document.createElement('span')
 
                     p.innerText = author  
-                    
+                    p.classList.add('author')
                     authorsDiv.appendChild(p)
                     
                 
@@ -222,17 +229,85 @@ findBook.addEventListener('click', () => {
             }
             // add them to the book result section
             resultSec.appendChild(container)
-            container.appendChild(img)
+            container.appendChild(bookImg)
             container.appendChild(h4)
             container.appendChild(authorsDiv)
-    
+            hoverImgCon.appendChild(hoverImg)
+            container.appendChild(hoverImgCon)
+            hoverImgCon.classList.add('hoverImg')
+            container.classList.add('book')
+            authorsDiv.classList.add('book-authors')
+            bookImg.classList.add('bookImg')
+            h4.classList.add('add-book-title')
+
+            container.addEventListener('click', async() => {
+                hoverImg.src = ''
+
+                const formData = {
+                        title: book.title,
+                        author: book.authors,
+                        image: book.image
+                    } 
+
+                console.log(formData)
+                let res = await fetch('/book/createBook',{
+                    method: 'POST',
+                    headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    },
+                    body: formData
+                });
+
+                console.log(res)
+            
+               
+              
+               
+            })
+
+            
         })
+
+
+        
         
     })
     
+    const bookImg = document.querySelector('.bookImg')
+    const bookTitle = document.querySelector('.add-book-title')
+    const bookAuthors = [...document.querySelectorAll('author')]
 
-    })
+
+    // add an event listener on each book container
+    // let booksEle = document.querySelectorAll('.book-result > div')
+
+    // booksEle.forEach(el => {
+    //     el.addEventListener('click', async() =>{
+    //         console.log('workin')
+    //     hoverImg.src = ''
+
+    //     const formData = new FormData()
+
+    //     formData.append('title', bookTitle)
+    //     formData.append('author', bookAuthors.join(''))
+    //     formData.append('image', bookImg)
+
+    //     let response = await fetch('/book/createBook', {
+    //         method: 'POST',
+    //         body: new FormData(formElem)
+    //     });
+    
+    //     let result = await response.json();
+    //     console.log(result)
+    //     })
+    // })
 
 
+    // // console.log(bookAuthors)
+    // // console.log(booksEle)
+        
+  
+})
 
 
